@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <title>Chuck Norris Jokes</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            text-align: center;
+            background-color: yellow;
+        }
+
+        #chuck_Image {
+            margin-top: 20px;
+        }
+
+
+        button {
+            margin: 5px;
+        }
+    </style>
+
+     
+    <script>
+        
+        function jokes(Category){ 
+            fetch('https://api.chucknorris.io/jokes/random?category='+Category)
+            .then(response=>response.json())
+            .then(json => document.getElementById("chucks").innerHTML=json.value)
+            .catch(error => console.log('unable to reach URL'+error));
+        }
+   
+    </script>
+</head>
+<body>
+    
+    
+    
+    <label>What's chuck doing today?</label>
+    <p id="chucks"></p>
+
+   
+    <img id="chuck_Image" src="chuck.jpg" alt="Chuck Norris Image" width="300"><br><br>
+    
+
+    <button onclick="jokes('animal')">Animal</button>
+    <button onclick="jokes('career')">Career</button>
+    <button onclick="jokes('fashion')">Fashion</button>
+    <button onclick="jokes('food')">Food</button>
+    <button onclick="jokes('movie')">Movie</button>
+    <button onclick="jokes('music')">Music</button>
+    <button onclick="jokes('sport')">Sport</button>
+    <button onclick="jokes('science')">Science</button>
+
+</body>
+</html>
